@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Determinar Triángulo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #logo {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="ENLACE_DIRECTO_DE_LA_IMAGEN" alt="Logo Estudiantes QA" id="logo">
+    <h1>Determinar Triángulo</h1>
+
+    <label for="side1">Lado 1:</label>
+    <input type="number" id="side1" min="1" required>
+    <br>
+    <label for="side2">Lado 2:</label>
+    <input type="number" id="side2" min="1" required>
+    <br>
+    <label for="side3">Lado 3:</label>
+    <input type="number" id="side3" min="1" required>
+    <br>
+    <button onclick="determinarYMostrarTriangulo()">Determinar Triángulo</button>
+    <div id="result"></div>
+
+    <script>
+        function determinarYMostrarTriangulo() {
+            const side1 = parseFloat(document.getElementById('side1').value);
+            const side2 = parseFloat(document.getElementById('side2').value);
+            const side3 = parseFloat(document.getElementById('side3').value);
+
+            const result = determinarTriangulo(side1, side2, side3);
+            document.getElementById('result').textContent = result;
+        }
+
+        function determinarTriangulo(a, b, c) {
+            if (a <= 0 || b <= 0 || c <= 0) {
+                return "Error: Los lados deben ser positivos y mayores que cero.";
+            }
+            if (a === b && b === c) {
+                return "Triángulo equilátero";
+            } else if (a === b || b === c || a === c) {
+                return "Triángulo isósceles";
+            } else {
+                return "Triángulo escaleno";
+            }
+        }
+    </script>
+</body>
+</html> 
